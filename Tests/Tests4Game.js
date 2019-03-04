@@ -10,17 +10,26 @@ describe('Guessing game test suite', () => {
         expect(typeof referencia).not.toBe("string");
     });
     it('should be ok if a number is returned', () => {
-        var referencia = guessingGame(3);
-        expect(typeof referencia).toBe("number")
+        var game = new guessingGame(3);        
+        expect(typeof game.play(3)).toBe("number")
     });
     it('same number should not be returned all the time', () => {
-        //      expect(12).toEqual(jasmine.any(Number));
-        expect().nothing();
+        var elementos = new Array();
+        var game = new guessingGame(5);
+        var allEquals = true;
+        for (let index = 0; index < 5; index++) {
+            elementos.push(game.genRandom());
+            console.log(elementos[index]);                        
+            if(elementos[0]!== elementos[index]){
+                allEquals = false;
+            }
+        }
+        expect(allEquals).toBeFalsy();
     });
     it('guessing data should fail if not a number', () => {
-        //Done
         expect(function (){
-            guessingGame("a");
+            var game = new guessingGame("a");
+            game.play("a");
         }).toThrowError("Expected a number");
     });
     it('number of tries has to start at 5', () => {

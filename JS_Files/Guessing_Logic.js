@@ -8,15 +8,17 @@ Program tracks user's guesses and prevents duplicate guessing
 Game ends when user guesses correctly or runs out of tries
 */
 
-function guessingGame(number){
-    if (typeof number === "number") {
-      //my positive code here
-      return 1;  
-    }else{
-       throw new Error ("Expected a number");
-    }
-      
-    
-      
-        
+function guessingGame(triesLimit){
+    this.triesLimit = triesLimit;
+    this.genRandom = function() {
+        return Math.floor(Math.random() * (10 - 1)) + 1;;
+    };
+    this.play = function(_myGuess) {
+        if (typeof _myGuess === "number") {
+            //my positive code here
+            return 1;  
+          }else{
+             throw new Error ("Expected a number");
+          }    
+    }    
 }
