@@ -6,16 +6,22 @@ describe('Infrastructure validation', () => {
 
 describe('Guessing game test suite', () => {
     it('should fail if a string is returned', () => {
-        expect().nothing();
+        var referencia = guessingGame(3);
+        expect(typeof referencia).not.toBe("string");
     });
     it('should be ok if a number is returned', () => {
-        expect().nothing();
+        var referencia = guessingGame(3);
+        expect(typeof referencia).toBe("number")
     });
     it('same number should not be returned all the time', () => {
+        //      expect(12).toEqual(jasmine.any(Number));
         expect().nothing();
     });
-    it('should start with a number', () => {
-        expect().nothing();
+    it('guessing data should fail if not a number', () => {
+        //Done
+        expect(function (){
+            guessingGame("a");
+        }).toThrowError("Expected a number");
     });
     it('number of tries has to start at 5', () => {
         expect().nothing();
