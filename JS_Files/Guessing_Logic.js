@@ -16,9 +16,10 @@ function guessingGame(){
     this.play = function(_myGuess) {
         if (typeof _myGuess === "number" && (this.triesLimit > 0)) {
             //my positive code here
+            this.triesLimit--;
             return 1;  
           }else{
-             throw new Error ("Expected a number more than 0");
+             throw new Error ("You ran out of tries or set the tries limit to 0 or less");
           }    
     }    
 }

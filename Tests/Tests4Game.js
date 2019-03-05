@@ -19,7 +19,7 @@ describe('Guessing game test suite', () => {
         var allEquals = true;
         for (let index = 0; index < 5; index++) {
             elementos.push(game.genRandom());
-            console.log(elementos[index]);                        
+            //console.log(elementos[index]);                        
             if(elementos[0]!== elementos[index]){
                 allEquals = false;
             }
@@ -30,7 +30,7 @@ describe('Guessing game test suite', () => {
         expect(function (){
             var game = new guessingGame("a");
             game.play("a");
-        }).toThrowError("Expected a number more than 0");
+        }).toThrowError("You ran out of tries or set the tries limit to 0 or less");
     });
     it('number of tries has to start at 5', () => {
         var game = new guessingGame();
@@ -41,13 +41,23 @@ describe('Guessing game test suite', () => {
         expect(function () {
             game.triesLimit = 0;
             game.play(3);
-        }).toThrowError("Expected a number more than 0");
+        }).toThrowError("You ran out of tries or set the tries limit to 0 or less");
     });
     it('stop guessing when no more tries', () => {
-        expect().nothing();
+        var game = new guessingGame();
+        console.log("La variable Tries Limit inicia con " + game.triesLimit);
+        expect(function () {
+            while(game.triesLimit >= 0){
+                //console.log(game.triesLimit);
+                game.play(1);                
+            }
+        }).toThrowError("You ran out of tries or set the tries limit to 0 or less");
     });
     it('tries pool should decrease when tried', () => {
-        expect().nothing();
+        var game = new guessingGame();
+        var limiteInicial = game.triesLimit;        
+        game.play(3);        
+        expect(limiteInicial - 1).toEqual(game.triesLimit);
     });
     it('stop guessing when tell the right number', () => {
         expect().nothing();
