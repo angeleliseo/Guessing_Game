@@ -8,17 +8,17 @@ Program tracks user's guesses and prevents duplicate guessing
 Game ends when user guesses correctly or runs out of tries
 */
 
-function guessingGame(triesLimit){
-    this.triesLimit = triesLimit;
+function guessingGame(){
+    this.triesLimit = 5;
     this.genRandom = function() {
         return Math.floor(Math.random() * (10 - 1)) + 1;;
     };
     this.play = function(_myGuess) {
-        if (typeof _myGuess === "number") {
+        if (typeof _myGuess === "number" && (this.triesLimit > 0)) {
             //my positive code here
             return 1;  
           }else{
-             throw new Error ("Expected a number");
+             throw new Error ("Expected a number more than 0");
           }    
     }    
 }

@@ -30,16 +30,18 @@ describe('Guessing game test suite', () => {
         expect(function (){
             var game = new guessingGame("a");
             game.play("a");
-        }).toThrowError("Expected a number");
+        }).toThrowError("Expected a number more than 0");
     });
     it('number of tries has to start at 5', () => {
-        expect().nothing();
+        var game = new guessingGame();
+        expect(game.triesLimit).toBe(5);
     });
-    it('tries cant be 0', () => {
-        expect().nothing();
-    });
-    it('trires cant be negative', () => {
-        expect().nothing();
+    it('tries cant be set to 0 or less', () => {
+        var game = new guessingGame();        
+        expect(function () {
+            game.triesLimit = 0;
+            game.play(3);
+        }).toThrowError("Expected a number more than 0");
     });
     it('stop guessing when no more tries', () => {
         expect().nothing();
