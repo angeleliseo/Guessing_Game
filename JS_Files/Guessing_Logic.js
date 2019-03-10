@@ -29,7 +29,12 @@ function guessingGame(){
           }else{
              throw new Error ("You ran out of tries or set the tries limit to 0 or less");
           }    
-    }    
+    }
+    this.restart = function (){
+        guessing = new Array();
+        this.triesLimit = 5;
+    }
+
 }
 function playGame(number){    
     if (number === "" || number === null) {
