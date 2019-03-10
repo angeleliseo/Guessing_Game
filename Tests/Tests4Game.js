@@ -9,9 +9,9 @@ describe('Guessing game test suite', () => {
         var referencia = guessingGame();
         expect(typeof referencia).not.toBe("string");
     });
-    it('should be ok if a number is returned', () => {
+    it('should be ok if when wrong answer return false', () => {
         var game = new guessingGame();                
-        expect(typeof game.play(3)).toBe("number")
+        expect(game.play(game.numToGuess+1)).toBeFalsy();
     });
     it('same number should not be returned all the time', () => {
         var elementos = new Array();
@@ -64,7 +64,7 @@ describe('Guessing game test suite', () => {
     it('stop guessing when tell the right number', () => {
         var game = new guessingGame();
         //console.log(" Este es el numero a adivinar " + game.numToGuess);
-        expect(game.play(game.numToGuess)).toBe(1);
+        expect(game.play(game.numToGuess)).toBe(true);
     });
     it('no duplicate guessing', () => {
         var game = new guessingGame();

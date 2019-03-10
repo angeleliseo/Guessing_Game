@@ -21,10 +21,10 @@ function guessingGame(){
             if (_myGuess == this.numToGuess) {
                 console.log("Congratulations!!, you won!, the number to guess was in fact " + this.numToGuess + "  This game is over :D");
                 this.triesLimit = 0;
-                return 1;
+                return true;
             }else{
                 this.triesLimit--;
-                return 2;  
+                return false;
             }                        
           }else{
              throw new Error ("You ran out of tries or set the tries limit to 0 or less");
@@ -40,7 +40,7 @@ function playGame(number){
     if (number === "" || number === null) {
         alert("Please give me a nubmer"); 
     }else{        
-        if (myGame.play(parseInt(number)) == 1 ) {
+        if (myGame.play(parseInt(number))) {
             alert("Way to go, you just won!");
         }else{
             alert("Not even close lol, you have " + myGame.triesLimit + " tries more" );
