@@ -33,6 +33,7 @@ function guessingGame(){
     this.restart = function (){
         guessing = new Array();
         this.triesLimit = 5;
+        this.numToGuess = this.genRandom();
     }
 
 }

@@ -73,5 +73,35 @@ describe('Guessing game test suite', () => {
             game.play(game.numToGuess + 1);
         }).toThrowError("You ran out of tries or set the tries limit to 0 or less");
     });
-
+    it('should restart limit when invoked', () => {
+        var game = new guessingGame();
+        game.play(game.numToGuess);
+        game.restart();
+        expect(game.triesLimit).toBe(5);
+    });
+    it('should forget the numbers tried when restarted', () => {
+        var game = new guessingGame();
+        var guessingTry = game.numToGuess + 1;
+        var passed = false, secondRnd;
+        game.play(guessingTry);
+        game.restart();
+        secondRnd = game.play(guessingTry);
+        if (secondRnd === true || secondRnd === false) {
+            passed = true;
+        }
+        expect(passed).toBe(true);
+    });
+    it('should generate new number to guess when restarted', () => {
+        var game = new guessingGame();
+        var allEquals = true;
+        var genNumbers = new Array();
+        for (let index = 0; index < 5; index++) {            
+            genNumbers.push(game.numToGuess);
+            if (genNumbers[0] !== genNumbers[index]) {
+                allEquals = false;                
+            }
+            game.restart();
+        }
+        expect(allEquals).toBe(false);
+    });
 });
