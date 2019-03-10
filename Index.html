@@ -1,18 +1,19 @@
 <html>
     <head><title>Guessing Game</title>
-        <link rel="stylesheet" href="Styles/mianStyle.css">
+        <link rel="stylesheet" href="Styles/mianStyle.css">        
     </head>
     <body>
     <div class="presentation-content">
     <h1 class="presentation-title">Lets Play a Game!</h1>
     <div class="top-button-group">
-        <button class="retro-button">Play</button>
+        <button class="retro-button" id="btnPlay">Play</button>
         <button class="retro-button">Restart</button>
     </div>
     <div class="bottom-button-group">
-        <input type="text">
+        <input type="number" id="txtGuess">
     </div>
     </div>
-    <script src="/JS_Files/Guessing_Logic.js"></script>
+    <script src="JS_Files/Guessing_Logic.js"></script>    
+    <script src="JS_Files/util.JS"></script>
 </body>
 </html>

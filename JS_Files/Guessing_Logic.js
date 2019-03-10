@@ -7,7 +7,7 @@ User gets a set # of tries (default = 5)
 Program tracks user's guesses and prevents duplicate guessing
 Game ends when user guesses correctly or runs out of tries
 */
-
+var myGame = new guessingGame();
 function guessingGame(){
     this.triesLimit = 5;    
     this.genRandom = function() {
@@ -30,4 +30,15 @@ function guessingGame(){
              throw new Error ("You ran out of tries or set the tries limit to 0 or less");
           }    
     }    
+}
+function playGame(number){    
+    if (number === "" || number === null) {
+        alert("Please give me a nubmer"); 
+    }else{        
+        if (myGame.play(parseInt(number)) == 1 ) {
+            alert("Way to go, you just won!");
+        }else{
+            alert("Not even close lol, you have " + myGame.triesLimit + " tries more" );
+        }
+    }
 }
